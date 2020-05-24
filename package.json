@@ -1,0 +1,78 @@
+{
+  "name": "algos",
+  "version": "1.0.0",
+  "description": "An implementation of various data-structures and their operations in Node",
+  "main": "dist/index.js",
+  "keywords": [
+    "data-structures",
+    "algorithms",
+    "coding-interview"
+  ],
+  "author": "Rishinder Rana",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "eslint": "^6.0.1",
+    "jest": "^24.9.0",
+    "prettier": "^1.16.4",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "start": "npm run build && node dist/index",
+    "start:no-build": "node dist/index",
+    "help": "node main",
+    "test": "jest",
+    "lint": "eslint -c .eslintrc 'src/**/*.ts' --cache",
+    "build-babel": "babel src -d dist",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
+    "prettier:base": "prettier --parser typescript --single-quote",
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coveragePathIgnorePatterns": [
+      "src/config/"
+    ],
+    "coverageReporters": [
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "./test",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    }
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.138",
+    "lodash": "^4.17.15"
+  }
+}

@@ -1,0 +1,4 @@
+# Ignore files
+*.md
+dist/
+tsconfig.json
